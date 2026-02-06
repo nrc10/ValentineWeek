@@ -28,7 +28,30 @@ body.sad-mode{
 }
 
 body.happy-mode{
-  background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+  background:url('https://imgs.search.brave.com/EwgZXp1qbEvhwuE6qXkqMGmhDQO3InjfuM2sUhWHvOc/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTc0/NjU1OTM4L3Bob3Rv/L3Jvc2UtYmFja2dy/b3VuZC5qcGc_cz02/MTJ4NjEyJnc9MCZr/PTIwJmM9bldQQlU1/U3BmUFltUkR0bFRs/Vk56UkItU0ZSbkZB/SGVlV2gwOGItWVkx/ND0');
+  background-size:cover;
+  background-position:center center;
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+}
+
+/* Soft dark overlay on happy background for readability */
+body.happy-mode::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.25);
+  z-index:1;
+}
+
+.happy-overlay{
+  position:fixed;
+  inset:0;
+  background:transparent;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:50;
 }
 
 /* Wrapper */
@@ -88,10 +111,19 @@ h1{
   font-family:'Great Vibes',cursive;
 }
 
-.sad-box h2,
+.sad-box h2{
+  font-family:'Great Vibes',cursive;
+  font-size:2.4rem;
+  font-weight:500;
+  margin-bottom:20px;
+}
+
 .happy-box h2{
   font-family:'Great Vibes',cursive;
   font-size:2.4rem;
+  font-weight:700;
+  margin-bottom:20px;
+  color:white;
 }
 
 .buttons{
@@ -185,6 +217,7 @@ button{
 /* Bounce happy teddy */
 .happy-box img{
   animation:gifBounce 2s infinite ease-in-out;
+  width:300px;
 }
 
 .sad-box h2,
@@ -202,6 +235,11 @@ button{
 </style>
 </head>
 <body>
+
+<!-- Background Music -->
+<audio id="loveSong" loop preload="auto" playsinline>
+  <source src="music2.mp3" type="audio/mpeg">
+</audio>
 
 <div class="center-wrap" id="mainContent">
 
@@ -235,7 +273,7 @@ button{
 <!-- Happy Screen -->
 <div class="happy-overlay" id="happyOverlay">
   <div class="happy-box">
-    <img src="https://imgs.search.brave.com/l7tgOZZmxYn0V9NsV9uTanD4qiNDVG0E2SPCMrKuZxs/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzM3LzY3/L2Q0LzM3NjdkNDAz/NjZmM2NhODFmMWZl/NzYyMGU2ZWMwY2U3/LmpwZw" alt="Teddy with Rose">
+    <img src="https://imgs.search.brave.com/atmRDNS8A0LsR2jMyrx00Q7N-OSroA5W-QACsvKSm30/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS50ZW5vci5jb20v/ZTdTMVk1MTBCU0VB/QUFBTS9idWJ1LWR1/ZHUtdmFsZW50aW5l/J3MtZGF5LWhhcHB5/LXZhbGVudGluZSdz/LWRheS1idWJ1Lmdp/Zg.jpeg" alt="Teddy with Rose">
     <h2>I will shower you with roses everyday my love! 🌹</h2>
   </div>
 </div>
@@ -247,14 +285,18 @@ const sadOverlay = document.getElementById("sadOverlay");
 const happyOverlay = document.getElementById("happyOverlay");
 const mainContent = document.getElementById("mainContent");
 const restartBtn = document.getElementById("restartBtn");
+const loveSong = document.getElementById("loveSong");
 
 noBtn.addEventListener("click",()=>{
+  loveSong.pause();
   document.body.classList.add("sad-mode");
   mainContent.style.display = "none";
   sadOverlay.style.display = "flex";
 });
 
 yesBtn.addEventListener("click",()=>{
+  loveSong.currentTime = 0;
+  loveSong.play();
   document.body.classList.remove("sad-mode");
   document.body.classList.add("happy-mode");
   mainContent.style.display = "none";
@@ -276,6 +318,8 @@ function createRoseBurst(){
 
 
 restartBtn.addEventListener("click",()=>{
+  loveSong.pause();
+  loveSong.currentTime = 0;
   document.body.classList.remove("sad-mode");
   document.body.classList.remove("happy-mode");
   sadOverlay.style.display = "none";
