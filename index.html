@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valentine Week 💖</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  height:100vh;
+  overflow:hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+  transition:0.6s;
+}
+
+body.sad-mode{
+  background:linear-gradient(135deg,#888,#444);
+}
+
+body.happy-mode{
+  background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+}
+
+/* Wrapper */
+.center-wrap{
+  position:relative;
+}
+
+/* Teddy */
+.teddy{
+  position:absolute;
+  font-size:3rem;
+  animation:bounce 3s infinite ease-in-out, cuddle 2s infinite alternate;
+}
+
+/* Equal distance from rectangle */
+.tl{ top:-80px; left:-80px; }
+.tr{ top:-80px; right:-80px; }
+.bl{ bottom:-80px; left:-80px; }
+.br{ bottom:-80px; right:-80px; }
+
+@keyframes bounce{
+  0%,100%{ transform:translateY(0); }
+  50%{ transform:translateY(-25px); }
+}
+
+@keyframes cuddle{
+  from{ transform:scale(1) rotate(-5deg); }
+  to{ transform:scale(1.05) rotate(5deg); }
+}
+
+/* Main Box */
+.container{
+  background:rgba(255,255,255,0.95);
+  padding:45px 60px;
+  border-radius:20px;
+  text-align:center;
+  box-shadow:0 10px 25px rgba(0,0,0,0.2);
+  width:500px;
+}
+
+/* Happy Teddy */
+.teddy-gif{
+  width:180px;
+  margin-bottom:15px;
+  animation:gifBounce 2s infinite ease-in-out;
+}
+
+@keyframes gifBounce{
+  0%,100%{ transform:translateY(0); }
+  50%{ transform:translateY(-20px); }
+}
+
+h1{
+  color:#ff4b6e;
+  margin-bottom:30px;
+  font-size:2.3rem;
+  font-family:'Great Vibes',cursive;
+}
+
+.sad-box h2,
+.happy-box h2{
+  font-family:'Great Vibes',cursive;
+  font-size:2.4rem;
+}
+
+.buttons{
+  display:flex;
+  gap:25px;
+  justify-content:center;
+}
+
+button{
+  padding:12px 35px;
+  font-size:1.1rem;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+#yesBtn{
+  background:#ff4b6e;
+  color:white;
+}
+
+#yesBtn:hover{ background:#e84362; }
+
+#noBtn{
+  background:#555;
+  color:white;
+}
+
+#noBtn:hover{ background:#333; }
+
+/* Sad Overlay */
+/* Sad Overlay */
+.sad-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.6);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:50;
+}
+
+/* Happy Overlay (no dark background) */
+
+/* Floating Roses */
+.rose{
+  position:fixed;
+  font-size:2rem;
+  animation:roseFloat 3s linear forwards;
+}
+
+@keyframes roseFloat{
+  0%{ transform:translateY(0) scale(1); opacity:1; }
+  100%{ transform:translateY(-300px) scale(1.5); opacity:0; }
+}
+
+
+.happy-overlay{
+  position:fixed;
+  inset:0;
+  background:transparent;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:50;
+}
+
+.sad-box{
+  background:#222;
+  padding:200px 200px;
+  border-radius:20px;
+  text-align:center;
+  color:white;
+}
+
+.happy-box{
+  background:transparent;
+  padding:200px 200px;
+  border-radius:20px;
+  text-align:center;
+  color:#ff4b6e;
+}
+
+.sad-box img,
+.happy-box img{
+  width:160px;
+  margin-bottom:15px;
+}
+
+/* Bounce happy teddy */
+.happy-box img{
+  animation:gifBounce 2s infinite ease-in-out;
+}
+
+.sad-box h2,
+.happy-box h2{
+  font-weight:500;
+  margin-bottom:20px;
+}
+
+#restartBtn{
+  background:#ff4b6e;
+  color:white;
+}
+
+#restartBtn:hover{ background:#e84362; }
+</style>
+</head>
+<body>
+
+<div class="center-wrap" id="mainContent">
+
+  <!-- Corner Teddies -->
+  <div class="teddy tl">🧸🧸</div>
+  <div class="teddy tr">🧸🧸</div>
+  <div class="teddy bl">🧸🧸</div>
+  <div class="teddy br">🧸🧸</div>
+
+  <!-- Main Card -->
+  <div class="container">
+    <img class="teddy-gif" src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif" alt="Bouncing Teddy">
+    <h1>Are we ready for Valentine's Week? 💘</h1>
+    <div class="buttons">
+      <button id="yesBtn">Yes</button>
+      <button id="noBtn">No</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- Sad Screen -->
+<div class="sad-overlay" id="sadOverlay">
+  <div class="sad-box">
+    <img src="https://media.giphy.com/media/ROF8OQvDmxytW/giphy.gif" alt="Sad Teddy">
+    <h2>Why did you break my heart? 💔</h2>
+    <button id="restartBtn">Start Again</button>
+  </div>
+</div>
+
+<!-- Happy Screen -->
+<div class="happy-overlay" id="happyOverlay">
+  <div class="happy-box">
+    <img src="https://imgs.search.brave.com/l7tgOZZmxYn0V9NsV9uTanD4qiNDVG0E2SPCMrKuZxs/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzM3LzY3/L2Q0LzM3NjdkNDAz/NjZmM2NhODFmMWZl/NzYyMGU2ZWMwY2U3/LmpwZw" alt="Teddy with Rose">
+    <h2>I will shower you with roses everyday my love! 🌹</h2>
+  </div>
+</div>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+const sadOverlay = document.getElementById("sadOverlay");
+const happyOverlay = document.getElementById("happyOverlay");
+const mainContent = document.getElementById("mainContent");
+const restartBtn = document.getElementById("restartBtn");
+
+noBtn.addEventListener("click",()=>{
+  document.body.classList.add("sad-mode");
+  mainContent.style.display = "none";
+  sadOverlay.style.display = "flex";
+});
+
+yesBtn.addEventListener("click",()=>{
+  document.body.classList.remove("sad-mode");
+  document.body.classList.add("happy-mode");
+  mainContent.style.display = "none";
+  happyOverlay.style.display = "flex";
+  createRoseBurst();
+});
+
+function createRoseBurst(){
+  for(let i=0;i<25;i++){
+    const rose=document.createElement("div");
+    rose.classList.add("rose");
+    rose.innerText="🌹";
+    rose.style.left=Math.random()*window.innerWidth+"px";
+    rose.style.top="60%";
+    document.body.appendChild(rose);
+    setTimeout(()=>{ rose.remove(); },3000);
+  }
+}
+
+
+restartBtn.addEventListener("click",()=>{
+  document.body.classList.remove("sad-mode");
+  document.body.classList.remove("happy-mode");
+  sadOverlay.style.display = "none";
+  happyOverlay.style.display = "none";
+  mainContent.style.display = "block";
+});
+</script>
+
+</body>
+</html>
