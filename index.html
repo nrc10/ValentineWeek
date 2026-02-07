@@ -23,6 +23,8 @@ body{
   transition:0.6s;
 }
 
+/* ================= BACKGROUNDS ================= */
+
 body.sad-mode{
   background:linear-gradient(135deg,#888,#444);
 }
@@ -30,43 +32,95 @@ body.sad-mode{
 body.happy-mode{
   background:url('https://imgs.search.brave.com/EwgZXp1qbEvhwuE6qXkqMGmhDQO3InjfuM2sUhWHvOc/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTc0/NjU1OTM4L3Bob3Rv/L3Jvc2UtYmFja2dy/b3VuZC5qcGc_cz02/MTJ4NjEyJnc9MCZr/PTIwJmM9bldQQlU1/U3BmUFltUkR0bFRs/Vk56UkItU0ZSbkZB/SGVlV2gwOGItWVkx/ND0');
   background-size:cover;
-  background-position:center center;
+  background-position:center;
   background-repeat:no-repeat;
-  background-attachment:fixed;
 }
 
-/* Soft dark overlay on happy background for readability */
+.proposebg{
+  background:url('images/propose.jpg');
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+}
+
+.chocolatebg{
+  background:url('images/chocolate.jpg');
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+}
+
+.teddybg{
+  background:url('images/teddy.jpg');
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+}
+
+.promisebg{
+  background:url('images/promisebg.jpg');
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+}
+
+.hugbg{
+  background:url('images/hugbg.jpg');
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+}
+
+.kissbg{
+  background:url('images/kissbg.jpg');
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+}
+
+.vdbg{
+  background:url('images/vdbg.jpg');
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+}
+
+/* Soft overlay — NEVER blocks clicks */
 body.happy-mode::before{
   content:"";
   position:fixed;
   inset:0;
   background:rgba(0,0,0,0.25);
   z-index:1;
+  pointer-events:none;
 }
 
-.happy-overlay{
-  position:fixed;
-  inset:0;
-  background:transparent;
-  display:none;
-  justify-content:center;
-  align-items:center;
-  z-index:50;
-}
+/* ================= LANDING ================= */
 
-/* Wrapper */
 .center-wrap{
   position:relative;
+  z-index:10;
 }
 
-/* Teddy */
+.container{
+  position:relative;
+  z-index:20;
+  background:rgba(255,255,255,0.95);
+  padding:45px 60px;
+  border-radius:20px;
+  text-align:center;
+  box-shadow:0 10px 25px rgba(0,0,0,0.2);
+  width:500px;
+}
+
+/* ================= TEDDIES ================= */
+
 .teddy{
   position:absolute;
   font-size:3rem;
   animation:bounce 3s infinite ease-in-out, cuddle 2s infinite alternate;
 }
 
-/* Equal distance from rectangle */
 .tl{ top:-80px; left:-80px; }
 .tr{ top:-80px; right:-80px; }
 .bl{ bottom:-80px; left:-80px; }
@@ -82,17 +136,6 @@ body.happy-mode::before{
   to{ transform:scale(1.05) rotate(5deg); }
 }
 
-/* Main Box */
-.container{
-  background:rgba(255,255,255,0.95);
-  padding:45px 60px;
-  border-radius:20px;
-  text-align:center;
-  box-shadow:0 10px 25px rgba(0,0,0,0.2);
-  width:500px;
-}
-
-/* Happy Teddy */
 .teddy-gif{
   width:180px;
   margin-bottom:15px;
@@ -104,26 +147,13 @@ body.happy-mode::before{
   50%{ transform:translateY(-20px); }
 }
 
+/* ================= TEXT & BUTTONS ================= */
+
 h1{
   color:#ff4b6e;
   margin-bottom:30px;
   font-size:2.3rem;
   font-family:'Great Vibes',cursive;
-}
-
-.sad-box h2{
-  font-family:'Great Vibes',cursive;
-  font-size:2.4rem;
-  font-weight:500;
-  margin-bottom:20px;
-}
-
-.happy-box h2{
-  font-family:'Great Vibes',cursive;
-  font-size:2.4rem;
-  font-weight:700;
-  margin-bottom:20px;
-  color:white;
 }
 
 .buttons{
@@ -139,6 +169,8 @@ button{
   border-radius:30px;
   cursor:pointer;
   transition:0.3s;
+  position:relative;
+  z-index:30;
 }
 
 #yesBtn{
@@ -155,25 +187,64 @@ button{
 
 #noBtn:hover{ background:#333; }
 
-/* Sad Overlay */
-/* Sad Overlay */
-.sad-overlay{
+/* ================= OVERLAYS ================= */
+
+.sad-overlay,
+.happy-overlay{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,0.6);
   display:none;
   justify-content:center;
   align-items:center;
-  z-index:50;
+  z-index:40;
 }
 
-/* Happy Overlay (no dark background) */
+.sad-overlay{
+  background:rgba(0,0,0,0.6);
+}
 
-/* Floating Roses */
+.sad-box{
+  background:#222;
+  padding:200px;
+  border-radius:20px;
+  text-align:center;
+  color:white;
+}
+
+.happy-box{
+  background: transparent;
+  margin-top: -20px;        /* ↓ was 100px */
+  text-align: center;
+  color: white;
+  
+}
+
+.happy-box img{
+  width: 300px;
+  margin-bottom: 8px;     /* bring text closer */
+  animation: gifBounce 2s infinite ease-in-out;
+}
+
+.happy-box h2,
+.happy-box p{
+  margin-top: 0; 
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.2rem;         /* remove default gap */
+}
+
+
+.sad-box img{
+  width:160px;
+}
+
+/* ================= ROSES ================= */
+
 .rose{
   position:fixed;
   font-size:2rem;
   animation:roseFloat 3s linear forwards;
+  z-index:25;
+  pointer-events:none;
 }
 
 @keyframes roseFloat{
@@ -181,121 +252,209 @@ button{
   100%{ transform:translateY(-300px) scale(1.5); opacity:0; }
 }
 
+/* ================= NAV BUTTONS ================= */
 
-.happy-overlay{
+.next-btn{
+  position:fixed;
+  bottom:30px;
+  right:30px;
+  padding:14px 30px;
+  border-radius:40px;
+  background:#ff4b6e;
+  color:white;
+  z-index:100;
+}
+
+.back-btn{
+  position:fixed;
+  bottom:30px;
+  left:30px;
+  padding:12px 26px;
+  border-radius:40px;
+  background:#333;
+  color:white;
+  z-index:100;
+}
+
+/* ================= SCENES ================= */
+
+.scene{
   position:fixed;
   inset:0;
-  background:transparent;
   display:none;
   justify-content:center;
   align-items:center;
-  z-index:50;
-}
-
-.sad-box{
-  background:#222;
-  padding:200px 200px;
-  border-radius:20px;
   text-align:center;
-  color:white;
+  z-index:60;
 }
 
-.happy-box{
-  background:transparent;
-  padding:200px 200px;
-  border-radius:20px;
-  text-align:center;
-  color:#ff4b6e;
+body.scene-1{
+  background:url("propose1.jpg") center/cover no-repeat;
 }
 
-.sad-box img,
-.happy-box img{
-  width:160px;
-  margin-bottom:15px;
+body.scene-2{
+  background:url("images/bg2.jpg") center/cover no-repeat;
 }
 
-/* Bounce happy teddy */
-.happy-box img{
-  animation:gifBounce 2s infinite ease-in-out;
-  width:300px;
+body.scene-3{
+  background:url("images/bg3.jpg") center/cover no-repeat;
 }
 
-.sad-box h2,
-.happy-box h2{
-  font-weight:500;
-  margin-bottom:20px;
+body.scene-4{
+  background:url("images/bg4.jpg") center/cover no-repeat;
 }
 
-#restartBtn{
-  background:#ff4b6e;
-  color:white;
+body.scene-5{
+  background:url("images/bg5.jpg") center/cover no-repeat;
 }
 
-#restartBtn:hover{ background:#e84362; }
-/* ===================== */
-/* Mobile Responsiveness */
-/* ===================== */
+body.scene-6{
+  background:url("images/bg6.jpg") center/cover no-repeat;
+}
+
+#yesBtn{
+  position: relative;   /* keeps layout intact */
+  z-index: 999;         /* above overlays & pseudo-elements */
+  pointer-events: auto; /* guarantees click */
+}
+
+
+/* ================= MOBILE ================= */
+
+/* -------- Tablets & small laptops -------- */
+@media (max-width: 900px){
+  .container{
+    width: 90%;
+    padding: 35px 40px;
+  }
+
+  .happy-box img{
+    width: 240px;
+  }
+
+  .happy-box p{
+    font-size: 1.7rem;
+    line-height: 1.4;
+  }
+
+  .next-btn,
+  .back-btn{
+    padding: 12px 24px;
+    font-size: 1rem;
+  }
+}
+
+/* -------- Mobile phones -------- */
 @media (max-width: 600px){
-
   body{
-    padding:20px;
+    overflow-y: auto; /* allows scroll if needed */
   }
 
   .container{
-    width:90vw;
-    padding:30px 20px;
+    width: 92%;
+    padding: 25px 20px;
   }
 
   h1{
-    font-size:1.8rem;
-  }
-
-  .teddy-gif{
-    width:140px;
+    font-size: 1.8rem;
   }
 
   .teddy{
-    font-size:2.2rem;
+    display: none; /* corner teddies hide on small screens */
   }
 
-  .tl{ top:-50px; left:-30px; }
-  .tr{ top:-50px; right:-30px; }
-  .bl{ bottom:-50px; left:-30px; }
-  .br{ bottom:-50px; right:-30px; }
+  .teddy-gif{
+    width: 130px;
+  }
 
-  .sad-box,
   .happy-box{
-    padding:60px 25px;
-    width:90vw;
+    margin-top: 0;
+    padding: 10px;
   }
 
-  .sad-box img,
   .happy-box img{
-    width:120px;
+    width: 180px;
   }
 
-  .sad-box h2,
-  .happy-box h2{
-    font-size:1.8rem;
+  .happy-box p{
+    font-size: 1.35rem;
+    line-height: 1.45;
+    padding: 0 10px;
   }
 
-  button{
-    padding:10px 26px;
-    font-size:1rem;
+  .next-btn{
+    right: 15px;
+    bottom: 15px;
+    padding: 10px 22px;
+    font-size: 0.95rem;
+  }
+
+  .back-btn{
+    left: 15px;
+    bottom: 15px;
+    padding: 10px 22px;
+    font-size: 0.95rem;
   }
 }
+
+/* -------- Very small phones -------- */
+@media (max-width: 380px){
+  .happy-box p{
+    font-size: 1.2rem;
+  }
+
+  .happy-box img{
+    width: 160px;
+  }
+
+  .next-btn,
+  .back-btn{
+    font-size: 0.85rem;
+    padding: 8px 18px;
+  }
+}
+
+
 
 </style>
 </head>
 <body>
 
 <!-- Background Music -->
-<audio id="loveSong" loop preload="auto" playsinline>
-  <source src="music2.mp3" type="audio/mpeg">
+<audio id="roseSong" loop preload="auto">
+  <source src="music/rosemusic.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="scene1Song" loop preload="auto">
+  <source src="music/propose.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="scene2Song" loop preload="auto">
+  <source src="music/dairymilk.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="scene3Song" loop preload="auto">
+  <source src="music/teddysong.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="scene4Song" loop preload="auto">
+  <source src="music/promisesong.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="scene5Song" loop preload="auto">
+  <source src="music/hugsong.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="scene6Song" loop preload="auto">
+  <source src="music/kisssong.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="scene7Song" loop preload="auto">
+  <source src="music/vdmusic.mp3" type="audio/mpeg">
 </audio>
 
 <audio id="sadSong" loop preload="auto" playsinline>
-  <source src="sadmusic.mp3" type="audio/mpeg">
+  <source src="music/sadmusic.mp3" type="audio/mpeg">
 </audio>
 <div class="center-wrap" id="mainContent">
 
@@ -307,7 +466,7 @@ button{
 
   <!-- Main Card -->
   <div class="container">
-    <img class="teddy-gif" src="cuddle.jpg" alt="Bouncing Teddy">
+    <img class="teddy-gif" src="images/cuddle.jpg" alt="Bouncing Teddy">
     <h1>Are we ready for Valentine's Week? 💘</h1>
     <div class="buttons">
       <button id="yesBtn">Yes</button>
@@ -329,70 +488,296 @@ button{
 <!-- Happy Screen -->
 <div class="happy-overlay" id="happyOverlay">
   <div class="happy-box">
-    <img src="https://imgs.search.brave.com/atmRDNS8A0LsR2jMyrx00Q7N-OSroA5W-QACsvKSm30/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS50ZW5vci5jb20v/ZTdTMVk1MTBCU0VB/QUFBTS9idWJ1LWR1/ZHUtdmFsZW50aW5l/J3MtZGF5LWhhcHB5/LXZhbGVudGluZSdz/LWRheS1idWJ1Lmdp/Zg.jpeg" alt="Teddy with Rose">
-    <h2>I will shower you with roses everyday my love! 🌹</h2>
+    <img src="images/cuddle.jpg" alt="Teddy with Rose">
+    <p>Today I don’t just give you a rose—I give you the quiet promise that even with thorns, I’ll choose you. Like a rose finding space to bloom between stones, you found a place in my life without force, without noise. This flower will fade, but the feeling behind it has already learned how to stay. 🌹</p>
+    <p>I place a rose in your hands, not as a gift, but as a confession,
+      that even with thorns, beauty chooses to bloom.
+      Like this flower, you arrived quietly,
+      turning my ordinary days into something worth pausing for.</p>
+    <button id="nextBtn" class="next-btn">Click Here ➜</button>
+    <button class="back-btn">← Back</button>
   </div>
 </div>
+
+<div id="sceneContainer">
+
+  <div class="scene proposebg" id="scene1">
+    <div class="happy-box">
+      <img src="images/proposegif.jpg" alt="">
+      <p>I don’t propose with dramatic words or perfect timing—I propose with honesty. I choose you in the small moments, in the pauses between conversations, in the comfort of knowing I can be myself around you. So this is me, asking softly: will you walk beside me, not to complete me, but to grow with me?I don’t kneel before you;
+          I stand beside you.
+          And in that stillness, I ask—
+          if our shadows can learn the same direction,
+          if our silences can feel like home.</p>
+      <button class="back-btn">← Back</button>
+      <button id="nextBtn" class="next-btn">Click Here ➜</button>
+    </div>
+  </div>
+
+  <div class="scene chocolatebg" id="scene2">
+
+    <div class="happy-box">
+      <img src="images/chcocolate1.jpg" alt="">
+      <p>You’re like chocolate in my life—unexpectedly comforting. Sweet, yes, but with depth, with layers that reveal themselves slowly. Some days you melt my worries away, some days you remind me that a little bitterness makes sweetness real. And honestly, I don’t want life without that balance anymore.You are sweetness that doesn’t rush,
+          a slow melt on restless days.
+          A reminder that bitterness belongs too,
+          because only then does the heart recognize depth. 💕</p>
+      <button class="next-btn">Click Here ➜</button>
+      <button class="back-btn">← Back</button>
+    </div>
+  </div>
+
+  <div class="scene teddybg" id="scene3" >
+    <div class="happy-box">
+      <img src="images/teddygif.jpg" alt="">
+      <p>If I could, I’d gift you something that holds warmth, listens without interrupting, and stays even when words fail—something like a teddy, something like me. Not perfect, not magical, just present. Because sometimes love is simply being there, arms open, saying nothing at all.
+        If comfort had a shape,
+        it would rest in open arms and unspoken care.
+        Something that waits without asking,
+        holds without claiming,
+        and stays—especially when words fall short. ✨</p>
+      <button class="next-btn">Click Here ➜</button>
+      <button class="back-btn">← Back</button>
+    </div>
+  </div>
+
+  <div class="scene promisebg" id="scene4">
+    <div class="happy-box">
+      <img src="images/promisegif.jpg" alt="">
+      <p>I can’t promise a flawless future, but I can promise truth. I promise to try—even on days I’m tired, even when things feel heavy. I promise to listen more than I speak and stay when it’s easier to leave. These promises aren’t loud; they’re meant to last.I promise you presence,
+        even when certainty trembles.
+        I promise to choose effort over ease,
+        truth over silence,
+        and you—again and again. 💍</p>
+      <button class="next-btn">Click Here ➜</button>
+      <button class="back-btn">← Back</button>
+    </div>
+  </div>
+
+  <div class="scene hugbg" id="scene5">
+    <div class="happy-box">
+      <img src="images/huggif.jpg" alt="">
+      <p>A hug can say what language can’t. It can slow racing thoughts, soften fear, and make the world feel less sharp. Today, imagine me holding you—not to protect you from life, but to remind you that you don’t face it alone.A hug is where time loosens its grip.
+          Where breaths align,
+          and the world, for a moment, forgets to be heavy.
+          Come here—let everything else wait. ❤️</p>
+      <button class="next-btn">Click Here ➜</button>
+      <button class="back-btn">← Back</button>
+    </div>
+  </div>
+
+  <div class="scene kissbg" id="scene6">
+    <div class="happy-box">
+      <img src="images/kissgif.jpg" alt="">
+      <p>A kiss isn’t just closeness; it’s trust. It’s the quiet agreement that two people feel safe enough to meet halfway. If I kiss you today, it won’t be rushed or dramatic—it’ll be gentle, like a sentence whispered instead of spoken.A kiss is a pause between two hearts—
+          not taken, but trusted.
+          A soft meeting where fear dissolves,
+          and closeness learns how to be gentle.💖</p>
+      <button class="back-btn">← Back</button>
+      <button class="next-btn">Click Here ➜</button>
+    </div>
+  </div>
+
+  <div class="scene vdbg" id="scene7">
+    <div class="happy-box">
+      <img src="images/vdgif.jpg" alt="">
+      <p>Today isn’t about a date on the calendar—it’s about choosing each other again. In a world that rushes, distracts, and replaces, I choose you slowly, intentionally, and fully. Not just today, but in all the ordinary days that make love real.This day isn’t a celebration—
+          it’s a continuation.
+          Of choosing, of staying,
+          of loving you not loudly,
+          but endlessly.💖</p>
+      <button class="back-btn">← Back</button>
+      <button class="next-btn start-again-btn" onclick="goToLanding()" >Start Again</button>
+    </div>
+  </div>
+
+</div>
+</div>
+
 
 <script>
 const noBtn = document.getElementById("noBtn");
 const yesBtn = document.getElementById("yesBtn");
+
 const sadOverlay = document.getElementById("sadOverlay");
 const happyOverlay = document.getElementById("happyOverlay");
 const mainContent = document.getElementById("mainContent");
 const restartBtn = document.getElementById("restartBtn");
+
 const loveSong = document.getElementById("loveSong");
-const sadSong = document.getElementById("sadSong");
+const sadSong  = document.getElementById("sadSong");
+const roseSong = document.getElementById("roseSong");
 
-noBtn.addEventListener("click",()=>{
-  loveSong.pause();
-  sadSong.currentTime = 0;
-  sadSong.play();
+const nextBtn = document.getElementById("nextBtn");
+const scenes = document.querySelectorAll(".scene");
 
-  document.body.classList.add("sad-mode");
-  mainContent.style.display = "none";
-  sadOverlay.style.display = "flex";
-});
+let sceneIndex = 0;
 
-yesBtn.addEventListener("click",()=>{
-  sadSong.pause();
-  loveSong.currentTime = 0;
-  loveSong.play();
+/* ================= AUDIO ================= */
 
-  document.body.classList.remove("sad-mode");
-  document.body.classList.add("happy-mode");
+const allSongs = [
+  loveSong,
+  sadSong,
+  roseSong,
+  document.getElementById("scene1Song"),
+  document.getElementById("scene2Song"),
+  document.getElementById("scene3Song"),
+  document.getElementById("scene4Song"),
+  document.getElementById("scene5Song"),
+  document.getElementById("scene6Song")
+];
 
-  mainContent.style.display = "none";
-  happyOverlay.style.display = "flex";
-  createRoseBurst();
-});
+function stopAllAudio(except = null){
+  allSongs.forEach(song=>{
+    if(song && song !== except){
+      song.pause();
+      song.currentTime = 0;
+    }
+  });
+}
 
-function createRoseBurst(){
-  for(let i=0;i<25;i++){
-    const rose=document.createElement("div");
-    rose.classList.add("rose");
-    rose.innerText="🌹";
-    rose.style.left=Math.random()*window.innerWidth+"px";
-    rose.style.top="60%";
-    document.body.appendChild(rose);
-    setTimeout(()=>{ rose.remove(); },3000);
+/* ================= BACKGROUND CONTROL ================= */
+
+function setBodyBackground(mode){
+  document.body.className = ""; // reset everything
+
+  if(mode === "rose"){
+    document.body.classList.add("happy-mode");
+  }else if(mode.startsWith("scene")){
+    document.body.classList.add("happy-mode");
   }
 }
 
+/* ================= ROSES ================= */
 
-restartBtn.addEventListener("click",()=>{
-  loveSong.pause();
-  sadSong.pause();
-  loveSong.currentTime = 0;
+function clearRoses(){
+  document.querySelectorAll(".rose").forEach(r => r.remove());
+}
+
+function createRoseBurst(){
+  for(let i=0;i<25;i++){
+    const rose = document.createElement("div");
+    rose.className = "rose";
+    rose.innerText = "🌹";
+    rose.style.left = Math.random() * window.innerWidth + "px";
+    rose.style.top = "60%";
+    document.body.appendChild(rose);
+    setTimeout(()=>rose.remove(),3000);
+  }
+}
+
+/* ================= LANDING ================= */
+
+noBtn.addEventListener("click", ()=>{
+  stopAllAudio();
+
   sadSong.currentTime = 0;
+  sadSong.play();
 
-  document.body.classList.remove("sad-mode");
-  document.body.classList.remove("happy-mode");
+  mainContent.style.display = "none";
+  sadOverlay.style.display = "flex";
+  document.body.classList.add("sad-mode");
+});
+
+yesBtn.addEventListener("click", ()=>{
+  stopAllAudio();
+
+  mainContent.style.display = "none";
+  happyOverlay.style.display = "flex";
+  happyOverlay.style.pointerEvents = "auto";
+
+  setBodyBackground("rose");
+
+  clearRoses();
+  createRoseBurst();
+
+  roseSong.currentTime = 0;
+  roseSong.volume = 1;
+  roseSong.muted = false;
+  roseSong.play().catch(()=>{});
+});
+
+/* ================= ROSE → SCENE ================= */
+
+if(nextBtn){
+  nextBtn.addEventListener("click", ()=>{
+    clearRoses();
+    stopAllAudio();
+
+    happyOverlay.style.display = "none";
+    scenes[0].style.display = "flex";
+    sceneIndex = 0;
+
+    setBodyBackground("scene1");
+    playSceneAudio(sceneIndex);
+  });
+}
+
+function playSceneAudio(index){
+  stopAllAudio();
+  const song = document.getElementById(`scene${index+1}Song`);
+  song?.play().catch(()=>{});
+}
+
+/* ================= SCENE NAV ================= */
+
+document.querySelectorAll(".scene .next-btn").forEach(btn=>{
+  btn.addEventListener("click", ()=>{
+    scenes[sceneIndex].style.display = "none";
+    sceneIndex++;
+
+    if(sceneIndex < scenes.length){
+      scenes[sceneIndex].style.display = "flex";
+      setBodyBackground(`scene${sceneIndex+1}`);
+      playSceneAudio(sceneIndex);
+    }
+  });
+});
+
+document.querySelectorAll(".scene .back-btn").forEach(btn=>{
+  btn.addEventListener("click", ()=>{
+    scenes[sceneIndex].style.display = "none";
+    sceneIndex--;
+
+    if(sceneIndex < 0){
+      stopAllAudio();
+      happyOverlay.style.display = "flex";
+      setBodyBackground("rose");
+      roseSong.play().catch(()=>{});
+      sceneIndex = 0;
+    }else{
+      scenes[sceneIndex].style.display = "flex";
+      setBodyBackground(`scene${sceneIndex+1}`);
+      playSceneAudio(sceneIndex);
+    }
+  });
+});
+
+/* ================= BACK TO START ================= */
+
+document.querySelector(".happy-overlay .back-btn")
+?.addEventListener("click", ()=>{
+  stopAllAudio();
+  clearRoses();
+
+  happyOverlay.style.display = "none";
+  mainContent.style.display = "block";
+  document.body.className = "";
+});
+
+/* ================= RESTART ================= */
+
+restartBtn.addEventListener("click", ()=>{
+  stopAllAudio();
 
   sadOverlay.style.display = "none";
   happyOverlay.style.display = "none";
   mainContent.style.display = "block";
+  document.body.className = "";
 });
+function goToLanding() {
+  window.location.href = "index.html"; 
+}
 </script>
 
 </body>
